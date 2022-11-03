@@ -1,17 +1,13 @@
 import abc
 import typing
-import entities 
+from app.domain import entities
 
 class TaskRepository(abc.ABC):
     
     @abc.abstractmethod
-    def find_by_id(self,task_id : str):
+    def get_tasks_by_user_id(self,task_id : str):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def create(self,task : Task) -> typing.Optional[Task]:
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def update(self,task : Task) -> typing.Optional[Task]:
+    def create_task(self,task : entities.Task) -> typing.Optional[entities.Task]:
         raise NotImplementedError

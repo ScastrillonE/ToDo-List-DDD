@@ -1,10 +1,10 @@
 from basework.domain.rules import BusinessRule
-from .entities import TaskStatus
+import value_objects
 
-class TaskNotModifiable(BusinessRule):
-    __message = "No se puede modificar una tarea con estado 'done' "
+class TaskNotChangeStatus(BusinessRule):
+    __message = "No se puede regresar a un estado anterior "
 
     task_status : TaskStatus
 
     def is_broken(self)-> bool:
-        return task_status == TaskStatus.done
+        return task_status == value_objects.TaskStatus.DONE
